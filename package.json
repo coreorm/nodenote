@@ -1,0 +1,24 @@
+{
+  "name": "nodenote",
+  "version": "0.0.1-a",
+  "description": "IOS style internal notification dispatcher and catcher for managing callbacks in a streamlined way",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreorm/nodenote.git"
+  },
+  "keywords": [
+    "nodejs",
+    "nodenote",
+    "notification"
+  ],
+  "author": "Bruce B Li",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coreorm/nodenote/issues"
+  },
+  "homepage": "https://github.com/coreorm/nodenote#readme"
+}
