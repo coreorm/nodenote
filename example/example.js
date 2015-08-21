@@ -8,38 +8,51 @@ function Example()
     var http = require('http');
 
     http.get(url, function(res) {
-        nodeNote.sendNotification('callTwitter', res);
+        nodeNote.sendNotification('httpCall', res);
     }).end();
 
 }
 
-// 1st observer
-nodeNote.addObserver('callTwitter', function(note) {
-    var res = note.object;
-    res.setEncoding('utf8');
-    console.log('STATUS: ' + res.statusCode);
-});
-
-// 2nd. you can add on top!
-nodeNote.addObserver('callTwitter', function(note) {
-    var res = note.object;
-    res.on('data', function (data) {
-        // and you can send another notification!
-        nodeNote.sendNotification('dataIsReady', data, {
-            'foo':'bar'
+/**
+ * we can actually define a proper object
+ * with functions to process and catch
+ * notifications.
+ * @type {{}}
+ */
+var Processor = {
+    'observe': function()
+    {
+        nodeNote.addObserver('httpCall', this.httpCall1);
+        nodeNote.addObserver('httpCall', this.httpCall2);
+        nodeNote.addObserver('dataIsReady', this.dataReady);
+    },
+    'httpCall1': function(note)
+    {
+        var res = note.object;
+        res.setEncoding('utf8');
+        console.log('STATUS: ' + res.statusCode);
+    },
+    'httpCall2': function(note)
+    {
+        var res = note.object;
+        res.on('data', function (data) {
+            // and you can send another notification!
+            nodeNote.sendNotification('dataIsReady', data, {
+                'foo':'bar'
+            });
         });
-    });
+    },
+    'dataReady': function(note)
+    {
+        var data = note.object;
+        console.log("\nResponse: ", data);
+        // and we can use user info too
+        console.log('User data for foo: ' + note.getUserInfo('foo'));
+    }
+};
 
-});
-
-// the one that's sent within the observer
-nodeNote.addObserver('dataIsReady', function(note) {
-    var data = note.object;
-    console.log("\nResponse: ", data);
-    // and we can use user info too
-    console.log('User data for foo: ' + note.getUserInfo('foo'))
-});
-
+// then observe
+Processor.observe();
 
 // then fire it and see what happens
 Example();
