@@ -2,6 +2,9 @@
 logs
 *.log
 
+# sdk
+.idea/*
+
 # Runtime data
 pids
 *.pid
