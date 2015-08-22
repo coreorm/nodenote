@@ -13,6 +13,15 @@ app.get('/', function(req, res) {
     });
 });
 
+app.get('/2', function(req, res) {
+    setTimeout(function() {
+        res.send({
+            status:200,
+            message:'Hello World! Again...delayed for 1.5 seconds'
+        });
+    }, 1500);
+});
+
 var server = app.listen(app.get('port'), function() {
     console.log('Express server listening on port ' + server.address().port);
 });
