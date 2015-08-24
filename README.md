@@ -30,6 +30,15 @@ note.addObserver('result1Received', function(note) {
 }); 
 ```
 
+## unit test
+```
+npm install -g mocha
+```
+then go to tests/
+```
+mocha
+```
+
 ## example:
 See https://github.com/coreorm/nodenote-example
 
