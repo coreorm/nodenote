@@ -30,15 +30,6 @@ note.addObserver('result1Received', function(note) {
 }); 
 ```
 
-## Example How-to
-```
-cd example;
-```
-start server
-```
-node server.js & > /dev/null
-```
-test by running example
-```
-node example.js
-```
+## example:
+See https://github.com/coreorm/nodenote-example
+
