@@ -1,6 +1,6 @@
 {
   "name": "nodenote",
-  "version": "0.0.1-a",
+  "version": "0.2b",
   "description": "IOS style internal notification dispatcher and catcher for managing callbacks in a streamlined way",
   "main": "index.js",
   "scripts": {
